@@ -36,8 +36,8 @@ app.use('/api/blog',blogRoutes)
 // Start your server
 const PORT = process.env.PORT || 4000;
 const VERCEL_URL = process.env.VERCEL_URL || `http://localhost:${PORT}`;
+connectDB();
 app.listen(PORT, () => {
-  // Call the connectDB function to establish the connection
-  connectDB();
+
   console.log(`Server running on port ${PORT}`);
 });
