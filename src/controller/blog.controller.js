@@ -12,7 +12,13 @@ export const createBlog = async (req, res) => {
             text: text,
             img: img
         })
-        const newBlog = await blog.save().populate('author')
+        // Save the blog first
+        const savedBlog = await blog.save();
+
+        // Populate after saving
+        const newBlog = await Blog.findById(savedBlog._id).populate('author')
+           
+
         return res.json({ message: "Blog posted successfully", newBlog })
     } catch (error) {
         console.log(error)
